@@ -17,8 +17,10 @@ function handleInputSave(e) {
 }
 
 function onFormInitialisation() {
+  let inputSaveObj = {};
   inputSaveObj = JSON.parse(localStorage.getItem(FEEDBACK_FORM_STATE) || '');
-  formRef.value = inputSaveObj.email || '';
+
+  inputRef.value = inputSaveObj.email || '';
   messageRef.value = inputSaveObj.message || '';
 }
 
@@ -26,12 +28,12 @@ onFormInitialisation();
 
 function handleFormSubmit(e) {
   e.preventDefault();
-
+  let inputSaveObj = {};
   inputSaveObj = JSON.parse(localStorage.getItem(FEEDBACK_FORM_STATE));
   // e.currentTarget.reset();
   // const saveMessage = localStorage.getItem(FEEDBACK_FORM_STATE);
 
-  if ((inputSaveObj.email, inputSaveObj.message)) {
+  if (inputSaveObj) {
     console.log(inputSaveObj.email, inputSaveObj.message);
     localStorage.removeItem(FEEDBACK_FORM_STATE);
     inputRef.value = '';
